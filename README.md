@@ -2,6 +2,7 @@
 
 #### Abel Valle Chávez
 0231889@up.edu.mx
+
 Repositorio Github: [dl-image-description-gen](https://github.com/abel-valle/dl-image-description-gen)
 
 ## Introducción
