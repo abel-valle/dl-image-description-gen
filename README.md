@@ -54,13 +54,7 @@ Para generar las descripciones, mediante aprendizaje supervisado, se le proporci
 Por ejemplo, la entrada de nuestro modelo es [*x1*, *x2*] y la salida será *y*. donde *x1* es el vector de características, *x2* es la secuencia de la descripción y *y* es el la palabra de salida que el modelo va a predecir (ver Tabla 1).
 
 Tabla 1. Ejemplo de generación de cadena.
-| x1 | x2 | y (predicción de palabra) |
-| -- | -- | ------------------------- |
-| [feature-vector] | start                            | two |
-| [feature-vector] | start two                        | men |
-| [feature-vector] | start two men                    | playing |
-| [feature-vector] | start two men playing            | basketball |
-| [feature-vector] | start two men playing basketball | end |
+![](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/table01.png =592x)
 
 ## 8. El modelo CNN-RNN
 La definición del modelo consiste en las siguientes partes.
@@ -69,7 +63,7 @@ La definición del modelo consiste en las siguientes partes.
 - Procesamiento de secuencia. Una capa embebida maneja la entrada en forma de texto, seguida de una capa LSTM.
 - Decoficador. Uniendo la salida de las dos capas anteriores, se procesa mediante una capa densa para tener como salida la predicción final. La capa final contiene el número de unidades igual al tamaño del vocabulario.
 
-| ![Esquema de modelo](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png) |
+| ![Esquema de modelo](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png =800x) |
 |:--:| 
 | Figura 4. Esquema de modelo. Imagen generada mediante la función *plot_model()* de *keras.utils*. |
 
