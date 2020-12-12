@@ -2,13 +2,14 @@
 
 #### Abel Valle Chávez
 0231889@up.edu.mx
+Repositorio Github: [dl-image-description-gen](https://github.com/abel-valle/dl-image-description-gen)
 
 ## Introducción
 La intención de este trabajo es poder integrar distintas redes neuronales (NN) y procesamiento de lenguaje natural (NLP). El problema que seleccioné para cumplir con dicha intención se originó en el artículo "Show and Tell: A Neural Image Caption Generator" de colaboradores de Google [[1]](#referencias). El objetivo es realizar una implementación para entrenar un modelo de deep learning que permita proporcionar una descripción textual en inglés que vaya de acuerdo a una imagen dada. Las NN que se usan en la implementación son Red Neuronal Convolucional (CNN) complementando con la Red Neuronal Recurrente (RNN) Long Short Term Memory (LSTM).
 
 | ![Modelo general CNN-RNN.](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/cnn-rnn-general.png) |
 |:--:| 
-| Figura 1. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada.|
+| Figura 1. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada. Imagen obtenida de [[1]](#referencias) |
 
 ## 1. El conjunto de datos
 El conjunto de datos utilizado es el de Flickr_8K [[2]](#referencias) que cuenta con 8091 imágenes de distintas dimensiones y se ha convertido en un estándar en el problema de descripción textual de imágenes. Dentro de los datos se proporciona un archivo de texto (Flickr8k.token) que contiene el nombre del archivo de imagen y su descripción.
@@ -54,7 +55,7 @@ Para generar las descripciones, mediante aprendizaje supervisado, se le proporci
 Por ejemplo, la entrada de nuestro modelo es [*x1*, *x2*] y la salida será *y*. donde *x1* es el vector de características, *x2* es la secuencia de la descripción y *y* es el la palabra de salida que el modelo va a predecir (ver Tabla 1).
 
 Tabla 1. Ejemplo de generación de cadena.
-![](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/table01.png =592x)
+![tabla01](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/table01.png)
 
 ## 8. El modelo CNN-RNN
 La definición del modelo consiste en las siguientes partes.
@@ -63,7 +64,7 @@ La definición del modelo consiste en las siguientes partes.
 - Procesamiento de secuencia. Una capa embebida maneja la entrada en forma de texto, seguida de una capa LSTM.
 - Decoficador. Uniendo la salida de las dos capas anteriores, se procesa mediante una capa densa para tener como salida la predicción final. La capa final contiene el número de unidades igual al tamaño del vocabulario.
 
-| ![Esquema de modelo](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png =800x) |
+| ![Esquema de modelo](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png) |
 |:--:| 
 | Figura 4. Esquema de modelo. Imagen generada mediante la función *plot_model()* de *keras.utils*. |
 
