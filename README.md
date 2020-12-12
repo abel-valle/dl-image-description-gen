@@ -5,6 +5,8 @@
 
 Repositorio Github: [dl-image-description-gen](https://github.com/abel-valle/dl-image-description-gen)
 
+Cuaderno de Colaboratory: [image-caption-gen-abelvalle.ipynb](https://github.com/abel-valle/dl-image-description-gen/blob/main/image-caption-gen-abelvalle.ipynb)
+
 ## Introducción
 La intención de este trabajo es poder integrar distintas redes neuronales (NN) y procesamiento de lenguaje natural (NLP). El problema que seleccioné para cumplir con dicha intención se originó en el artículo "Show and Tell: A Neural Image Caption Generator" de colaboradores de Google [[1]](#referencias). El objetivo es realizar una implementación para entrenar un modelo de deep learning que permita proporcionar una descripción textual en inglés que vaya de acuerdo a una imagen dada. Las NN que se usan en la implementación son Red Neuronal Convolucional (CNN) complementando con la Red Neuronal Recurrente (RNN) Long Short Term Memory (LSTM).
 
