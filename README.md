@@ -10,7 +10,7 @@ La intención de este trabajo es poder integrar distintas redes neuronales (NN) 
 
 | ![Modelo general CNN-RNN.](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/cnn-rnn-general.png) |
 |:--:| 
-| Figura 1. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada. Imagen obtenida de [[1]](#referencias) |
+| Figura 1. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada. Imagen obtenida de [[1]](#referencias). |
 
 ## 1. El conjunto de datos
 El conjunto de datos utilizado es el de Flickr_8K [[2]](#referencias) que cuenta con 8091 imágenes de distintas dimensiones y se ha convertido en un estándar en el problema de descripción textual de imágenes. Dentro de los datos se proporciona un archivo de texto (Flickr8k.token) que contiene el nombre del archivo de imagen y su descripción.
@@ -27,7 +27,7 @@ Las redes recurrentes LSTM son apropiadas para problemas donde los eventos suced
 
 | ![Bloque de memoria LSTM.](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/lstm-memory-block.png) |
 |:--:| 
-| Figura 2. Bloque de memoria LSTM. Contiene una celda c que es controlada por 3 compuertas. En azul se muestran las conexiones recurrentes. La salida del bloque termina en Softmax para la predicción de palabra.|
+| Figura 2. Bloque de memoria LSTM. Contiene una celda c que es controlada por 3 compuertas. En azul se muestran las conexiones recurrentes. La salida del bloque termina en Softmax para la predicción de palabra. Imagen obtenida de [[1]](#referencias). |
 
 ## 3. El modelo del generador de descripción de imagen
 Para implementar el modelo generador de descripciones se unirán las arquitecturas CNN y LSTM, a dicha unión también se le denomina modelo CNN-RNN.
@@ -37,7 +37,7 @@ Para implementar el modelo generador de descripciones se unirán las arquitectur
 
 | ![Modelo general CNN-RNN.](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/cnn-rnn-model.png) |
 |:--:| 
-| Figura 3. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada.|
+| Figura 3. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada. Imagen obtenida de [[1]](#referencias). |
 
 ## 4. Extracción del vector de características de las imágenes
 Para esta etapa se aplica la técnica de *transfer learning*, que consiste en utilizar un modelo previamente entrenado en conjuntos de datos grandes de donde se extraen características que posteriormente utilizamos en nuestro procesamiento. El modelo se reutiliza es Xception, que ha sido entrenado en un conjunto de imágenes que tiene 1000 clases. El modelo se importa directamente de keras.applications. Se observó que el modelo Xception trabaja con imágenes de tamaño (299 x 299 x 3) como entrada, por lo tanto, las imágenes se ajustan al tamaño requerido.
@@ -93,7 +93,9 @@ Más ejemplos se pueden encontrar en el siguiente vínculo:
 [image-caption-gen-abelvalle.ipynb](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png)
 
 ## 11. Conclusiones
-Se implementó una red neuronal que integra dos arquitecturas una CNN para el reconocimiento de imagen y una RNN LSTM para generar descripciones textuales razonables en inglés. La CNN codifica la imagen, seguida de la RNN LSTM que genera la sentencia correspondiente. Los resultados al probar con distintas imágenes son interesantes ya que en el texto se capta parte del contexto de la imagen. Es evidente que conforme se aumente el conjunto de entrenamiento las descripciones proporcionarán más sentido al contexto de la imagen. 
+Se implementó una red neuronal que integra dos arquitecturas una CNN para el reconocimiento de imagen y una RNN LSTM para generar descripciones textuales razonables en inglés. La CNN codifica la imagen, seguida de la RNN LSTM que genera la sentencia correspondiente. Los resultados al probar con distintas imágenes son interesantes ya que en el texto se capta parte del contexto de la imagen. Es evidente que conforme se aumente el conjunto de entrenamiento las descripciones proporcionarán más sentido al contexto de la imagen.
+
+Conforme la tarea de descripción de imágenes vaya evolucionando, se puede extender a proporcionar indicios de contexto o características que a simple vista humana se pueden omitir, extendiendo habilidades de un observador de seguridad o bien ayudando a personas con deficiencia visual a escuchar la descripción de una imagen (text-to-speech).
 
 ## Referencias
 [1] O. Vinyals, A. Toshev, S. Bengio and D. Erhan, "Show and tell: A neural image caption generator", Proceedings of 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 3156-3164, 2015.
