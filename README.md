@@ -90,7 +90,7 @@ A continuación se muestran algunas de las imágenes de prueba que se le proporc
 
 
 Más ejemplos se pueden encontrar en el siguiente vínculo:
-[image-caption-gen-abelvalle.ipynb](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png)
+[image-caption-gen-abelvalle.ipynb](https://github.com/abel-valle/dl-image-description-gen/blob/main/image-caption-gen-abelvalle.ipynb)
 
 ## 11. Conclusiones
 Se implementó una red neuronal que integra dos arquitecturas una CNN para el reconocimiento de imagen y una RNN LSTM para generar descripciones textuales razonables en inglés. La CNN codifica la imagen, seguida de la RNN LSTM que genera la sentencia correspondiente. Los resultados al probar con distintas imágenes son interesantes ya que en el texto se capta parte del contexto de la imagen. Es evidente que conforme se aumente el conjunto de entrenamiento las descripciones proporcionarán más sentido al contexto de la imagen.
