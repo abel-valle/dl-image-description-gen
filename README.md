@@ -74,7 +74,7 @@ La definición del modelo consiste en las siguientes partes.
 | Figura 4. Esquema de modelo. Imagen generada mediante la función *plot_model()* de *keras.utils*. |
 
 ## 9. Entrenamiento del modelo
-Para el entrenamiento del modelo, se utilizan 6000 imágenes generando las secuencias de entrada y salida en batch, ajustándolas al modelo mediante el método *model.fit_generator()*. El modelo entrenado se guarda en una carpeta para su futuro uso sin necesidad de volver a entrenar.
+Para el entrenamiento del modelo, se utilizan 6000 imágenes generando las secuencias de entrada y salida en batch, ajustándolas al modelo mediante el método *model.fit_generator()*. El modelo entrenado se guarda como un archivo *model_[epoch].h5* en una carpeta para su futuro uso sin necesidad de volver a entrenar.
 
 ## 10. Resultados y conclusiones
 
@@ -92,7 +92,7 @@ https://www.kaggle.com/wikiabhi/image-caption-generator
 - **flickr-8k-dataset**: Carpeta con 8091 imágenes. Por motivo de portabilidad, las imágenes se tienen que descomprimir a partir del archivo *flickr-8k-dataset.zip* crear y colocar en la carpeta.
 - **flickr-8k-text**: Carpeta que contiene archivos de texto con las descripciones de cada imagen. Por motivo de portabilidad, los archivos txt se tienen que descomprimir a partir del archivo *flickr-8k-text.zip* crear y colocar en la carpeta.
 - **models**: Carpeta que contiene el o los modelos entrenados, el modelo listo para usarse se encuentra en el archivo *model_9.h5*.
-- descriptions.txt – Archivo de texto que tiene los nombres de cada imagen después del preprocesamiento.
+- **descriptions.txt** – Archivo de texto que tiene los nombres de cada imagen después del preprocesamiento.
 - **features.p**: Archivo de objeto *Pickle* que contiene el vector de características obtenidas mediante el modelo CNN pre-entrenado Xception.
 - **tokenizer.p**: Contiene los tokens mapeados a un índice (valor numérico).
 - **image_caption_gen_abelvalle.ipynb**: Cuaderno de notas Google Colaboratory el cual contiene el código del proyecto.
