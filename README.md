@@ -25,7 +25,7 @@ Las redes recurrentes LSTM son apropiadas para problemas donde los eventos suced
 
 | ![Bloque de memoria LSTM.](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/lstm-memory-block.png) |
 |:--:| 
-| Figura X.  Contiene una celda c que es controlada por 3 compuertas. En azul se muestran las conexiones recurrentes. La salida del bloque termina en Softmax para la predicción de palabra.|
+| Figura 2. Bloque de memoria LSTM. Contiene una celda c que es controlada por 3 compuertas. En azul se muestran las conexiones recurrentes. La salida del bloque termina en Softmax para la predicción de palabra.|
 
 ## 3. El modelo del generador de descripción de imagen
 Para implementar el modelo generador de descripciones se unirán las arquitecturas CNN y LSTM, a dicha unión también se le denomina modelo CNN-RNN.
@@ -35,7 +35,7 @@ Para implementar el modelo generador de descripciones se unirán las arquitectur
 
 | ![Modelo general CNN-RNN.](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/cnn-rnn-model.png) |
 |:--:| 
-| Figura X. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada.|
+| Figura 3. Modelo que consiste en una CNN de visión seguida de una RNN generadora de lenguaje a partir de una imagen de entrada.|
 
 ## 4. Extracción del vector de características de las imágenes
 Para esta etapa se aplica la técnica de *transfer learning*, que consiste en utilizar un modelo previamente entrenado en conjuntos de datos grandes de donde se extraen características que posteriormente utilizamos en nuestro procesamiento. El modelo se reutiliza es Xception, que ha sido entrenado en un conjunto de imágenes que tiene 1000 clases. El modelo se importa directamente de keras.applications. Se observó que el modelo Xception trabaja con imágenes de tamaño (299 x 299 x 3) como entrada, por lo tanto, las imágenes se ajustan al tamaño requerido.
@@ -53,6 +53,7 @@ A cada palabra se le asocia un índice numérico único. Para lo anterior, Keras
 Para generar las descripciones, mediante aprendizaje supervisado, se le proporciona al modelo la entrada y la salida para el entrenamiento. Se entrenan 6000 imágenes, cada una con su vector de 2048 características y su descripción codificada en forma numérica. Para el propósito se utiliza *yield* de Python. Al usar *yield*, interrumpimos la ejecución en determinado punto, conservando la instancia para su uso posterior, así hasta que hayamos terminado.
 Por ejemplo, la entrada de nuestro modelo es [*x1*, *x2*] y la salida será *y*. donde *x1* es el vector de características, *x2* es la secuencia de la descripción y *y* es el la palabra de salida que el modelo va a predecir (ver Tabla 1).
 
+Tabla 1. Ejemplo de generación de cadena.
 | x1 | x2 | y (predicción de palabra) |
 | -- | -- | ------------------------- |
 | [feature-vector] | start                            | two |
@@ -60,7 +61,6 @@ Por ejemplo, la entrada de nuestro modelo es [*x1*, *x2*] y la salida será *y*.
 | [feature-vector] | start two men                    | playing |
 | [feature-vector] | start two men playing            | basketball |
 | [feature-vector] | start two men playing basketball | end |
-
 
 ## 8. El modelo CNN-RNN
 La definición del modelo consiste en las siguientes partes.
@@ -71,12 +71,13 @@ La definición del modelo consiste en las siguientes partes.
 
 | ![Esquema de modelo](https://raw.githubusercontent.com/abel-valle/dl-image-description-gen/main/img/model.png) |
 |:--:| 
-| Figura X. Esquema de modelo. Imagen generada mediante la función *plot_model()* de *keras.utils*. |
+| Figura 4. Esquema de modelo. Imagen generada mediante la función *plot_model()* de *keras.utils*. |
 
 ## 9. Entrenamiento del modelo
 Para el entrenamiento del modelo, se utilizan 6000 imágenes generando las secuencias de entrada y salida en batch, ajustándolas al modelo mediante el método *model.fit_generator()*. El modelo entrenado se guarda en una carpeta para su futuro uso sin necesidad de volver a entrenar.
 
-## 10. Resultados
+## 10. Resultados y conclusiones
+
 
 ## Referencias
 [1] O. Vinyals, A. Toshev, S. Bengio and D. Erhan, "Show and tell: A neural image caption generator", Proceedings of 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 3156-3164, 2015.
@@ -86,3 +87,12 @@ Para el entrenamiento del modelo, se utilizan 6000 imágenes generando las secue
 ### Códigos de referencia
 https://www.kaggle.com/shadabhussain/automated-image-captioning-flickr8
 https://www.kaggle.com/wikiabhi/image-caption-generator
+
+## Organización del repositorio
+- **flickr-8k-dataset**: Carpeta con 8091 imágenes. Por motivo de portabilidad, las imágenes se tienen que descomprimir a partir del archivo *flickr-8k-dataset.zip* crear y colocar en la carpeta.
+- **flickr-8k-text**: Carpeta que contiene archivos de texto con las descripciones de cada imagen. Por motivo de portabilidad, los archivos txt se tienen que descomprimir a partir del archivo *flickr-8k-text.zip* crear y colocar en la carpeta.
+- **models**: Carpeta que contiene el o los modelos entrenados, el modelo listo para usarse se encuentra en el archivo *model_9.h5*.
+- descriptions.txt – Archivo de texto que tiene los nombres de cada imagen después del preprocesamiento.
+- **features.p**: Archivo de objeto *Pickle* que contiene el vector de características obtenidas mediante el modelo CNN pre-entrenado Xception.
+- **tokenizer.p**: Contiene los tokens mapeados a un índice (valor numérico).
+- **image_caption_gen_abelvalle.ipynb**: Cuaderno de notas Google Colaboratory el cual contiene el código del proyecto.
